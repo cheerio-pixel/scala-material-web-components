@@ -1,4 +1,4 @@
-package com.cheerio_pixel.webcomponents
+package io.github.cheerio_pixel.webcomponents
 
 import com.raquo.laminar.api.L.*
 

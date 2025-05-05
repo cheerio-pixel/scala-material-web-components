@@ -11,6 +11,6 @@ lazy val root = project
 
     scalaJSLinkerConfig ~= (_.withModuleKind(ModuleKind.ESModule)),
     libraryDependencies ++= Seq(
-      "com.raquo" %%% "laminar" % "17.0.0" % Provided
+      "com.raquo" %%% "laminar" % "17.0.0" % Provided,
     ),
   )

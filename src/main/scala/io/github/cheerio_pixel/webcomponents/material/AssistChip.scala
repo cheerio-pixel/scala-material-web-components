@@ -1,0 +1,43 @@
+package io.github.cheerio_pixel.webcomponents.material
+
+import com.raquo.laminar.api.L.*
+import org.scalajs.dom
+import scala.scalajs.js
+import scala.scalajs.js.annotation.JSImport
+import com.raquo.laminar.tags.CustomHtmlTag
+import com.raquo.laminar.codecs.{BooleanAsAttrPresenceCodec, StringAsIsCodec, DoubleAsStringCodec}
+import io.github.cheerio_pixel.webcomponents.material.eventtypes.EventWithPreciseTarget
+import io.github.cheerio_pixel.webcomponents.WebComponent
+
+/** Assist chips represent smart or automated actions
+  * that can span multiple apps, such as opening a
+  * calendar event from the home screen.
+  *
+  * @see
+  *    <a href="https://material-web.dev/components/chip/#assist-chip">the doc</a> for more information.
+  */
+object AssistChip extends AbstractChip {
+  @js.native
+  trait RawElement extends js.Object
+
+  @js.native
+  @JSImport("@material/web/chips/assist-chip.js", JSImport.Default)
+  object RawImport extends js.Object
+
+  used(RawImport)
+
+  type Ref = dom.html.Element & RawElement
+  lazy val elevated: HtmlAttr[Boolean] = htmlAttr("elevated", BooleanAsAttrPresenceCodec)
+  lazy val href: HtmlAttr[String] = htmlAttr("href", StringAsIsCodec)
+  lazy val target: HtmlAttr[String] = htmlAttr("target", StringAsIsCodec)
+
+  object slots {
+    val icon = Slot("icon")
+  }
+
+  object events {
+    val updateFocus: EventProp[EventWithPreciseTarget[Ref]] = new EventProp("update-focus")
+  }
+
+  protected val tag: CustomHtmlTag[Ref] = CustomHtmlTag("md-assist-chip")
+}
